@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Portfolio Viewer</title>
+  <style>
+    :root {
+      --bg1: #0f2027;
+      --bg2: #203a43;
+      --bg3: #2c5364;
+      --glow: #00d4ff;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      color: white;
+      background: linear-gradient(-45deg, #1e003e, #003b6f, #00d4ff, #7f00ff);
+      background-size: 400% 400%;
+      animation: gradientShift 10s ease infinite;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      padding: 50px 20px;
+    }
+
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    h1 {
+      font-size: 2.8rem;
+      margin-bottom: 10px;
+      text-shadow: 0 0 15px var(--glow);
+      font-weight: 700;
+      letter-spacing: 0.5px;
+    }
+
+    p.subtitle {
+      margin-top: 0;
+      font-size: 1.1rem;
+      color: #bdeaff;
+      opacity: 0.85;
+      text-align: center;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 25px;
+      width: 100%;
+      max-width: 1200px;
+      margin-top: 40px;
+    }
+
+    .card {
+      position: relative;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 5px 25px rgba(0, 0, 0, 0.4);
+      cursor: pointer;
+      transition: transform 0.35s ease, box-shadow 0.35s ease;
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 30px var(--glow);
+    }
+
+    .card iframe {
+      width: 100%;
+      height: 250px;
+      border: none;
+      border-radius: 20px;
+      transition: opacity 0.3s ease;
+    }
+
+    .title {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      padding: 15px;
+      background: rgba(0, 0, 0, 0.7);
+      text-align: center;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      font-size: 1.05rem;
+    }
+
+    footer {
+      margin-top: 60px;
+      color: #a9cfe3;
+      font-size: 0.9rem;
+      opacity: 0.7;
+    }
+  </style>
+</head>
+<body>
+  <h1>My Web Development Projects</h1>
+  <p class="subtitle">Explore live previews of my favorite works and collaborations</p>
+  <div class="grid" id="portfolioGrid"></div>
+  <footer>© 2025 My Portfolio</footer>
+
+  <script>
+    const domains = [
+      { name: "Ganaya", url: "https://tinyfrankhorwitz.github.io/ganayawebreactapp" },
+      { name: "voicewrld", url: "https://tinyfrankhorwitz.github.io/voicewrldwebclient" },
+      { name: "legal assistants", url: "https://iessysriasesoresviteri.com/" },
+      { name: "indie gamedev studio", url: "https://tinyfrankhorwitz.github.io/eltinydevwebreactapp/" },
+      { name: "croky", url: "https://crokyweb.web.app/" },
+      { name: "WebGraphics Demonstration", url: "https://tinyfrankhorwitz.github.io/blackholedemonstration" },
+      { name: "Big Brain", url: "https://bigbrain.web.app" },
+    ];
+    const grid = document.getElementById('portfolioGrid');
+
+    domains.forEach(site => {
+      const card = document.createElement('div');
+      card.className = 'card';
+      card.innerHTML = `
+        <iframe src="${site.url}"></iframe>
+        <div class="title">${site.name}</div>
+      `;
+      card.addEventListener('click', () => window.open(site.url, '_blank'));
+      grid.appendChild(card);
+    });
+  </script>
+</body>
+</html>
