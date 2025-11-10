@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Web Portfolio</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --card: rgba(15, 15, 20, 0.8);
+      --text: #f5f5f5;
+      --accent: #00d4ff;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Inter", sans-serif;
+      color: var(--text);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      overflow-x: hidden;
+      background: linear-gradient(-45deg, #1e003e, #003b6f, #00d4ff, #7f00ff);
+      background-size: 400% 400%;
+      animation: gradientMove 15s ease infinite;
+    }
+
+    @keyframes gradientMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    header {
+      text-align: center;
+      padding: 3rem 1rem 2rem;
+    }
+
+    h1 {
+      font-size: 2.6rem;
+      font-weight: 800;
+      letter-spacing: 1px;
+      margin-bottom: 0.3rem;
+    }
+
+    p.subtitle {
+      font-size: 1.1rem;
+      opacity: 0.8;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+      gap: 2rem;
+      width: 90%;
+      max-width: 1400px;
+      padding-bottom: 3rem;
+    }
+
+    .card {
+      background: var(--card);
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 0 25px rgba(0, 0, 0, 0.4);
+      display: flex;
+      flex-direction: column;
+      transform: scale(0.95);
+      opacity: 0;
+      animation: fadeIn 0.8s ease forwards;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(40px) scale(0.95);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    iframe {
+      width: 100%;
+      height: 250px;
+      border: none;
+      background: #000;
+    }
+
+    .title {
+      padding: 1rem;
+      font-weight: 600;
+      font-size: 1.1rem;
+      text-align: center;
+      background: rgba(255, 255, 255, 0.04);
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(6px);
+    }
+
+    footer {
+      padding: 2rem;
+      text-align: center;
+      font-size: 0.9rem;
+      opacity: 0.6;
+    }
+
+    @media (max-width: 600px) {
+      iframe {
+        height: 200px;
+      }
+      h1 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>My Web Portfolio</h1>
+    <p class="subtitle">A collection of my interactive and creative projects 🌐</p>
+  </header>
+
+  <main class="grid" id="siteGrid"></main>
+
+  <footer>© 2025 Francisco Hidalgo — All rights reserved.</footer>
+
+  <script>
+    const sites = [
+      "https://tinyfrankhorwitz.github.io/eltinydevwebreactapp/",
+      "https://https://crokyweb.web.app/", 
+      "https://iessysriasesoresviteri.com/",
+      "https://tinyfrankhorwitz.github.io/voicewrldwebclient",
+      "https://dribbble.com",
+      "https://www.behance.net"
+    ];
+
+    const grid = document.getElementById("siteGrid");
+
+    sites.forEach((url, index) => {
+      const domain = new URL(url).hostname.replace("www.", "");
+      const card = document.createElement("div");
+      card.className = "card";
+      card.style.animationDelay = `${index * 0.1}s`;
+      card.innerHTML = `
+        <iframe src="${url}"></iframe>
+        <div class="title">${domain}</div>
+      `;
+      grid.appendChild(card);
+    });
+  </script>
+</body>
+</html>
