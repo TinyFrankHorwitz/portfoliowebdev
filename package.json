@@ -1,0 +1,19 @@
+{
+  "name": "portfolioviewer",
+  "version": "1.0.0",
+  "main": "index.js",
+  "homepage": "https://tinyfrankhorwitz.github.io/portfoliowebdev",
+  "scripts": {
+    "build": "npx webpack --mode production",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "gh-pages": "^6.3.0",
+    "webpack": "^5.102.1",
+    "webpack-cli": "^6.0.1"
+  }
+}
