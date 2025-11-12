@@ -78,6 +78,11 @@
       border: none;
       border-radius: 20px;
       transition: opacity 0.3s ease;
+      overflow: hidden;
+      scrollbar-width: none; /* Firefox */
+    }
+    .card iframe::-webkit-scrollbar {
+      display: none; /* Chrome, Safari */
     }
 
     .title {
@@ -108,13 +113,13 @@
 
   <script>
     const domains = [
+      { name: "ChatGPTrainer", url: "https://tinyfrankhorwitz.github.io/chatgptrainer" },
       { name: "Ganaya", url: "https://tinyfrankhorwitz.github.io/ganayawebreactapp" },
-      { name: "voicewrld", url: "https://tinyfrankhorwitz.github.io/voicewrldwebclient" },
-      { name: "legal assistants", url: "https://iessysriasesoresviteri.com/" },
-      { name: "indie gamedev studio", url: "https://tinyfrankhorwitz.github.io/eltinydevwebreactapp/" },
-      { name: "croky", url: "https://crokyweb.web.app/" },
-      { name: "WebGraphics Demonstration", url: "https://tinyfrankhorwitz.github.io/blackholedemonstration" },
-      { name: "Big Brain", url: "https://bigbrain.web.app" },
+      { name: "Asistencia Legal", url: "https://iessysriasesoresviteri.com/" },
+      { name: "Indie Gamedev Studio", url: "https://tinyfrankhorwitz.github.io/eltinydevwebreactapp/" },
+      { name: "Croky", url: "https://crokyweb.web.app/" },
+      { name: "WebGL Demonstration", url: "https://tinyfrankhorwitz.github.io/blackholedemonstration" },
+      { name: "BigBrain", url: "https://bigbrain.web.app" },
     ];
     const grid = document.getElementById('portfolioGrid');
 
